@@ -12,6 +12,10 @@
   <img src="https://img.shields.io/badge/API_keys-none-lightgrey?style=flat-square" alt="No API keys">
 </p>
 
+<p align="center">
+  <img src="docs/demo.gif" alt="A zclipper clip: webcam on top, gameplay below, word-by-word captions" width="270">
+</p>
+
 zclipper is a Claude skill that turns YouTube, Twitch and Kick streams into short vertical clips with word-by-word captions: the streamer's facecam on top, the gameplay below, ready for Shorts, TikTok and Reels. It finds the videos, measures where the best moments are, cuts only those seconds and renders the clips on your own computer. Claude does the judging: which moments are worth posting, where to cut, and the title, caption and hashtags for each clip.
 
 No paid APIs, no credits, no upload to a clipping service.
@@ -20,6 +24,7 @@ No paid APIs, no credits, no upload to a clipping service.
 
 - [How it works](#how-it-works)
 - [What you get](#what-you-get)
+- [Real-world results](#real-world-results)
 - [Installation](#installation)
 - [Usage](#usage)
 - [What's inside](#whats-inside)
@@ -27,6 +32,7 @@ No paid APIs, no credits, no upload to a clipping service.
 - [Limits](#limits)
 - [Updating](#updating)
 - [Contributing](#contributing)
+- [Credits](#credits)
 - [License](#license)
 
 ## How it works
@@ -60,6 +66,50 @@ Every clip is 1080x1920 by default:
 - **No facecam?** The gameplay fills the whole 9:16 frame, with a title bar on top.
 - **Another shape?** Ask for 4:5, 1:1 or 16:9 and captions and thumbnails scale to fit.
 - **With every clip:** a `.jpg` thumbnail with the punchline in big type, and `clips.json` with the title, caption, hashtags and transcript.
+
+**From this stream frame** (a webcam overlay at the bottom left, the game behind it):
+
+<p align="center">
+  <img src="docs/demo-stream.jpg" alt="Input: a 16:9 stream with a webcam overlay" width="640">
+</p>
+
+**zclipper renders** the 9:16 split, the 9:16 crop for streams without a webcam, and the thumbnail:
+
+<p align="center">
+  <img src="docs/demo-outputs.jpg" alt="Outputs: 9:16 split with captions, 9:16 crop with a title bar, thumbnail" width="640">
+</p>
+
+**Or 16:9 on request**, with the same captions:
+
+<p align="center">
+  <img src="docs/demo-16x9.jpg" alt="Output: 16:9 with captions and a title bar" width="640">
+</p>
+
+The demo stream above is built from two Blender open movies (see [Credits](#credits)) so it can be shown here; the clips, captions, facecam snapping and thumbnail are zclipper's real output on it. A rough webcam guess of `0.02, 0.56, 0.30, 0.41` was snapped to the overlay's frame at `0.023, 0.571, 0.292, 0.392`, and local Whisper transcribed all 63 spoken words.
+
+## Real-world results
+
+Tested on real streams in November 2026, on a Windows 11 laptop with no GPU.
+
+**Fresh Claude Code sessions** with zclipper installed and nothing but a one-line request:
+
+| Request | What Claude did | Result | Turns | Time | Usage |
+|---|---|---|---|---|---|
+| "clip me 2 GTA 6 best moments" | Searched this week's top GTA 6 videos, skipped two where the candidates were quiet driving, picked 2 moments from MrBeast Gaming's GTA 6 heist video, found the facecam | 2 clips, 38 s each | 17 | 5 min 50 s | $0.80 |
+| "give me 2 best moments from ohnepixel's livestream" | Found him live on Twitch and YouTube, tried Twitch viewer clips, found none yet, fell back to his finished "Day 3" stream | 2 clips, 38 s and 40 s | 18 | 4 min 3 s | $0.71 |
+
+**Pipeline runs:**
+
+| Source | Steps | Output | Time |
+|---|---|---|---|
+| IShowSpeed, "BEATING GTA 6 100% (FINAL MISSION)", 6 h 7 min YouTube stream | `find --streamer`, `moments`, `frame`, `make` | 2 clips with his webcam on top | 1 min 42 s to render both |
+| ohnepixel, GTA 6 on Twitch, live at the time | `frame` and `make` on the growing replay, Whisper captions | 25 s clip in 9:16 and 16:9 | 54 s, including the first Whisper model download |
+| MrBeast, "$456,000 Squid Game In Real Life!", 26 min | `moments` (replay graph and English captions), `make` | 2 clips, 25.6 s and 24.8 s | 70 s to render both |
+| Twitch live chat, ohnepixel | `live` for 1 minute | 279 chat messages read, clean exit | 1 min |
+
+The real-stream runs found five caption and download bugs the unit tests had missed (translated caption tracks, doubled styled captions, line-timed captions showing one word, a failing Twitch frame grab, a duplicated face in the split layout). Each was fixed with a test that reproduces it.
+
+zclipper is not affiliated with any of the creators or platforms named here.
 
 ## Installation
 
@@ -205,6 +255,13 @@ To try your changes in Claude Code without installing:
 ```bash
 claude --plugin-dir /path/to/zclipper
 ```
+
+## Credits
+
+The demo images and GIF are zclipper output made from two open movies by the Blender Foundation, both under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/):
+
+- *Big Buck Bunny* (gameplay), © copyright 2008, Blender Foundation, [bigbuckbunny.org](https://peach.blender.org)
+- *Tears of Steel* (webcam and dialogue), (CC) Blender Foundation, [mango.blender.org](https://mango.blender.org)
 
 ## License
 
