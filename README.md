@@ -1,4 +1,4 @@
-# zclipper
+<h1 align="center">ZClipper</h1>
 
 <p align="center">
   <b>Ask Claude for the best moments of a stream. Get finished vertical clips back in chat.</b>
@@ -13,10 +13,10 @@
 </p>
 
 <p align="center">
-  <img src="docs/demo.gif" alt="A zclipper clip: webcam on top, gameplay below, word-by-word captions" width="270">
+  <img src="docs/demo.gif" alt="A ZClipper clip: webcam on top, gameplay below, word-by-word captions" width="270">
 </p>
 
-zclipper is a Claude skill that turns YouTube, Twitch and Kick streams into short vertical clips with word-by-word captions: the streamer's facecam on top, the gameplay below, ready for Shorts, TikTok and Reels. It finds the videos, measures where the best moments are, cuts only those seconds and renders the clips on your own computer. Claude does the judging: which moments are worth posting, where to cut, and the title, caption and hashtags for each clip.
+ZClipper is a Claude skill that turns YouTube, Twitch and Kick streams into short vertical clips with word-by-word captions: the streamer's facecam on top, the gameplay below, ready for Shorts, TikTok and Reels. It finds the videos, measures where the best moments are, cuts only those seconds and renders the clips on your own computer. Claude does the judging: which moments are worth posting, where to cut, and the title, caption and hashtags for each clip.
 
 No paid APIs, no credits, no upload to a clipping service.
 
@@ -39,7 +39,7 @@ No paid APIs, no credits, no upload to a clipping service.
 You ask in plain words. The skill triggers on its own and Claude takes it from there:
 
 1. **Find the source.** For a topic ("GTA 6") it searches YouTube for the most viewed long videos and past streams of the week. For a streamer it checks YouTube, Twitch and Kick at once to see where they are live, and lists their latest finished streams.
-2. **Find the moments.** On YouTube, the "most replayed" graph and bursts of fast speech and reactions in the captions give a ranked list of candidates with what was said. On a live stream, zclipper reads the chat and marks the moments when it explodes; on Twitch and Kick it can also use the clips viewers already made.
+2. **Find the moments.** On YouTube, the "most replayed" graph and bursts of fast speech and reactions in the captions give a ranked list of candidates with what was said. On a live stream, ZClipper reads the chat and marks the moments when it explodes; on Twitch and Kick it can also use the clips viewers already made.
 3. **Pick and write.** Claude reads the candidates, keeps the ones a viewer with no context would still enjoy, tightens the cuts, and writes the post copy.
 4. **Cut and render.** Only the chosen seconds are downloaded, so a 6 hour stream never lands on your disk. Each clip is rendered with captions and a thumbnail.
 5. **Reply.** Claude answers in chat with every clip's file, title, caption, hashtags and thumbnail.
@@ -72,7 +72,7 @@ Every clip is 1080x1920 by default:
   <img src="docs/demo-stream.jpg" alt="Input: a 16:9 stream with a webcam overlay" width="640">
 </p>
 
-**zclipper renders** the 9:16 split, the 9:16 crop for streams without a webcam, and the thumbnail:
+**ZClipper renders** the 9:16 split, the 9:16 crop for streams without a webcam, and the thumbnail:
 
 <p align="center">
   <img src="docs/demo-outputs.jpg" alt="Outputs: 9:16 split with captions, 9:16 crop with a title bar, thumbnail" width="640">
@@ -123,9 +123,9 @@ npx skills add misterzaidxpy/zclipper -a claude-code
 
 **Ask Claude to install it**
 
-> Install the zclipper skill from https://github.com/misterzaidxpy/zclipper: clone the repository and copy its `skills/zclipper` folder to `~/.claude/skills/zclipper`.
+> Install the ZClipper skill from https://github.com/misterzaidxpy/zclipper: clone the repository and copy its `skills/zclipper` folder to `~/.claude/skills/zclipper`.
 
-Restart Claude Code, then ask **"run the zclipper doctor"** to check that everything is in place.
+Restart Claude Code, then ask **"run the ZClipper doctor"** to check that everything is in place.
 
 ## Usage
 
@@ -153,7 +153,7 @@ Make clips from this VOD for my Vyro campaign, facecam on top
 
 What to expect:
 
-| You ask for | zclipper does |
+| You ask for | ZClipper does |
 |---|---|
 | A topic or game | Clips the most viewed long videos about it from this week, at most two clips per video |
 | A streamer who is live on Twitch or Kick | Renders the most viewed clips viewers made of the current stream |
@@ -188,7 +188,7 @@ The `skills/zclipper` folder is the whole skill. Copy it into `~/.claude/skills/
 
 ## Commands
 
-Claude runs these for you; they are listed for debugging and for using zclipper without Claude. Every command prints JSON.
+Claude runs these for you; they are listed for debugging and for using ZClipper without Claude. Every command prints JSON.
 
 | Command | What it does |
 |---|---|
