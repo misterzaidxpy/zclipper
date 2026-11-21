@@ -1,0 +1,10 @@
+{
+  "name": "zclipper",
+  "version": "0.1.0",
+  "description": "Turn YouTube, Twitch and Kick streams into vertical clips with captions. Finds moments from the replay graph, transcript and live chat; Claude picks the best ones and writes the titles. Runs locally, no API keys.",
+  "author": {
+    "name": "Muhammad Zaid"
+  },
+  "license": "MIT",
+  "keywords": ["clipping", "shorts", "youtube", "twitch", "kick", "video", "ffmpeg", "yt-dlp"]
+}

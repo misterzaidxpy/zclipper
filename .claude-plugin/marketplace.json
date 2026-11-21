@@ -1,0 +1,20 @@
+{
+  "name": "zclipper",
+  "description": "zclipper: a Claude skill that turns YouTube, Twitch and Kick streams into vertical clips with captions.",
+  "owner": {
+    "name": "Muhammad Zaid"
+  },
+  "plugins": [
+    {
+      "name": "zclipper",
+      "source": "./",
+      "description": "Ask for the best moments of a game, a topic or a streamer's livestream and get finished 9:16 clips with captions, facecam on top and gameplay below. Runs locally, no API keys.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Muhammad Zaid"
+      },
+      "license": "MIT",
+      "keywords": ["clipping", "shorts", "youtube", "twitch", "kick", "gta6"]
+    }
+  ]
+}
