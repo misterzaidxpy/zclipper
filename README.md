@@ -107,8 +107,6 @@ Tested on real streams in November 2026, on a Windows 11 laptop with no GPU.
 | MrBeast, "$456,000 Squid Game In Real Life!", 26 min | `moments` (replay graph and English captions), `make` | 2 clips, 25.6 s and 24.8 s | 70 s to render both |
 | Twitch live chat, ohnepixel | `live` for 1 minute | 279 chat messages read, clean exit | 1 min |
 
-The real-stream runs found five caption and download bugs the unit tests had missed (translated caption tracks, doubled styled captions, line-timed captions showing one word, a failing Twitch frame grab, a duplicated face in the split layout). Each was fixed with a test that reproduces it.
-
 zclipper is not affiliated with any of the creators or platforms named here.
 
 ## Installation
