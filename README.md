@@ -24,7 +24,6 @@ No paid APIs, no credits, no upload to a clipping service.
 
 - [How it works](#how-it-works)
 - [What you get](#what-you-get)
-- [Real-world results](#real-world-results)
 - [Installation](#installation)
 - [Usage](#usage)
 - [What's inside](#whats-inside)
@@ -85,29 +84,7 @@ Every clip is 1080x1920 by default:
   <img src="docs/demo-16x9.jpg" alt="Output: 16:9 with captions and a title bar" width="640">
 </p>
 
-The demo stream above is built from two Blender open movies (see [Credits](#credits)) so it can be shown here; the clips, captions, facecam snapping and thumbnail are zclipper's real output on it. A rough webcam guess of `0.02, 0.56, 0.30, 0.41` was snapped to the overlay's frame at `0.023, 0.571, 0.292, 0.392`, and local Whisper transcribed all 63 spoken words.
-
-## Real-world results
-
-Tested on real streams in November 2026, on a Windows 11 laptop with no GPU.
-
-**Fresh Claude Code sessions** with zclipper installed and nothing but a one-line request:
-
-| Request | What Claude did | Result | Turns | Time | Usage |
-|---|---|---|---|---|---|
-| "clip me 2 GTA 6 best moments" | Searched this week's top GTA 6 videos, skipped two where the candidates were quiet driving, picked 2 moments from MrBeast Gaming's GTA 6 heist video, found the facecam | 2 clips, 38 s each | 17 | 5 min 50 s | $0.80 |
-| "give me 2 best moments from ohnepixel's livestream" | Found him live on Twitch and YouTube, tried Twitch viewer clips, found none yet, fell back to his finished "Day 3" stream | 2 clips, 38 s and 40 s | 18 | 4 min 3 s | $0.71 |
-
-**Pipeline runs:**
-
-| Source | Steps | Output | Time |
-|---|---|---|---|
-| IShowSpeed, "BEATING GTA 6 100% (FINAL MISSION)", 6 h 7 min YouTube stream | `find --streamer`, `moments`, `frame`, `make` | 2 clips with his webcam on top | 1 min 42 s to render both |
-| ohnepixel, GTA 6 on Twitch, live at the time | `frame` and `make` on the growing replay, Whisper captions | 25 s clip in 9:16 and 16:9 | 54 s, including the first Whisper model download |
-| MrBeast, "$456,000 Squid Game In Real Life!", 26 min | `moments` (replay graph and English captions), `make` | 2 clips, 25.6 s and 24.8 s | 70 s to render both |
-| Twitch live chat, ohnepixel | `live` for 1 minute | 279 chat messages read, clean exit | 1 min |
-
-zclipper is not affiliated with any of the creators or platforms named here.
+Demo footage: Blender open movies, see [Credits](#credits).
 
 ## Installation
 
