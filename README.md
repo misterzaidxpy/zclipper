@@ -31,7 +31,6 @@ No paid APIs, no credits, no upload to a clipping service.
 - [Limits](#limits)
 - [Updating](#updating)
 - [Contributing](#contributing)
-- [Credits](#credits)
 - [License](#license)
 
 ## How it works
@@ -66,7 +65,7 @@ Every clip is 1080x1920 by default:
 - **Another shape?** Ask for 4:5, 1:1 or 16:9 and captions and thumbnails scale to fit.
 - **With every clip:** a `.jpg` thumbnail with the punchline in big type, and `clips.json` with the title, caption, hashtags and transcript.
 
-**From this stream frame** (a webcam overlay at the bottom left, the game behind it):
+**From this stream frame** (IShowSpeed playing GTA 6, his webcam on the left):
 
 <p align="center">
   <img src="docs/demo-stream.jpg" alt="Input: a 16:9 stream with a webcam overlay" width="640">
@@ -83,8 +82,6 @@ Every clip is 1080x1920 by default:
 <p align="center">
   <img src="docs/demo-16x9.jpg" alt="Output: 16:9 with captions and a title bar" width="640">
 </p>
-
-Demo footage: Blender open movies, see [Credits](#credits).
 
 ## Installation
 
@@ -230,13 +227,6 @@ To try your changes in Claude Code without installing:
 ```bash
 claude --plugin-dir /path/to/zclipper
 ```
-
-## Credits
-
-The demo images and GIF are zclipper output made from two open movies by the Blender Foundation, both under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/):
-
-- *Big Buck Bunny* (gameplay), © copyright 2008, Blender Foundation, [bigbuckbunny.org](https://peach.blender.org)
-- *Tears of Steel* (webcam and dialogue), (CC) Blender Foundation, [mango.blender.org](https://mango.blender.org)
 
 ## License
 
